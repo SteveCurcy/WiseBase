@@ -22,6 +22,8 @@
 
 ## :bookmark: 设计模式
 
+- [备忘录模式](./docs/designPatterns/备忘录模式.md)
+
 ## :floppy_disk: 数据库
 
 ## :busts_in_silhouette: 贡献者
@@ -32,4 +34,3 @@
   <a href="https://github.com/IIMars"><img src="assets/imgs/Contributor-IIMars.png" style="height: 50px; border-radius: 50%;" /></a>
   <a href="https://github.com/changguangsheng"><img src="assets/imgs/Contributor-cgs.png" style="height: 50px; border-radius: 50%;" /></a>
 </div>
-
