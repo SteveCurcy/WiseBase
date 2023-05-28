@@ -25,6 +25,9 @@
 
 - [备忘录模式](./docs/designPatterns/备忘录模式.md)
 - [观察者模式](docs/designPatterns/观察者模式.md)
+- [状态模式](docs/designPatterns/状态模式.md)
+- [策略模式](docs/designPatterns/策略模式.md)
+- [模板方法模式](docs/designPatterns/模板方法模式.md)
 
 ## :floppy_disk: 数据库
 
