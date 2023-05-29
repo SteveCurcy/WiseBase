@@ -23,11 +23,21 @@
 
 ## :bookmark: 设计模式
 
+### 创建型模式
+
+- [单例模式](./docs/designPatterns/单例模式.md)
+- [工厂方法模式](./docs/designPatterns/工厂方法模式.md)
+- [抽象工厂模式](./docs/designPatterns/抽象工厂模式.md)
+
+### 行为模式
+
+- [中介者模式](./docs/designPatterns/中介者模式.md)
 - [备忘录模式](./docs/designPatterns/备忘录模式.md)
 - [观察者模式](docs/designPatterns/观察者模式.md)
 - [状态模式](docs/designPatterns/状态模式.md)
 - [策略模式](docs/designPatterns/策略模式.md)
 - [模板方法模式](docs/designPatterns/模板方法模式.md)
+- [访问者模式](docs/designPatterns/访问者模式.md)
 
 ## :floppy_disk: 数据库
 
