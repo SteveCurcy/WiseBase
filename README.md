@@ -28,6 +28,8 @@
 - [单例模式](./docs/designPatterns/单例模式.md)
 - [工厂方法模式](./docs/designPatterns/工厂方法模式.md)
 - [抽象工厂模式](./docs/designPatterns/抽象工厂模式.md)
+- [生成器模式](./docs/designPatterns/生成器模式.md)
+- [原型模式](./docs/designPatterns/原型模式.md)
 
 ### 行为模式
 
