@@ -26,13 +26,26 @@
 
 ### 创建型模式
 
+*创建型模式* 提供了创建对象的机制，能够提升已有代码的灵活性和可复用性。
+
 - [单例模式](./docs/designPatterns/单例模式.md)
 - [工厂方法模式](./docs/designPatterns/工厂方法模式.md)
 - [抽象工厂模式](./docs/designPatterns/抽象工厂模式.md)
 - [生成器模式](./docs/designPatterns/生成器模式.md)
 - [原型模式](./docs/designPatterns/原型模式.md)
 
+### 结构型模式
+
+*结构型模式* 介绍如何将对象和类组装成较大的结构，并同时保持结构的灵活和高效。
+
+- [适配器模式](./docs/designPatterns/适配器模式.md)
+- [桥接模式](./docs/designPatterns/桥接模式.md)
+- [组合模式](./docs/designPatterns/组合模式.md)
+- [装饰模式](./docs/designPatterns/装饰模式.md)
+
 ### 行为模式
+
+*行为模式* 负责对象间的高效沟通和职责委派。
 
 - [中介者模式](./docs/designPatterns/中介者模式.md)
 - [备忘录模式](./docs/designPatterns/备忘录模式.md)
