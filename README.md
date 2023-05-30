@@ -42,11 +42,17 @@
 - [桥接模式](./docs/designPatterns/桥接模式.md)
 - [组合模式](./docs/designPatterns/组合模式.md)
 - [装饰模式](./docs/designPatterns/装饰模式.md)
+- [外观模式](./docs/designPatterns/外观模式.md)
+- [享元模式](./docs/designPatterns/享元模式.md)
+- [代理模式](./docs/designPatterns/代理模式.md)
 
 ### 行为模式
 
 *行为模式* 负责对象间的高效沟通和职责委派。
 
+- [责任链模式](./docs/designPatterns/责任链模式.md)
+- [命令模式](./docs/designPatterns/命令模式.md)
+- [迭代器模式](./docs/designPatterns/迭代器模式.md)
 - [中介者模式](./docs/designPatterns/中介者模式.md)
 - [备忘录模式](./docs/designPatterns/备忘录模式.md)
 - [观察者模式](docs/designPatterns/观察者模式.md)
