@@ -1,0 +1,5 @@
+#忽略所有隐藏文件
+.*
+
+#保留.gitignore文件
+!.gitignore
