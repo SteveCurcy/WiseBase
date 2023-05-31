@@ -18,6 +18,8 @@
 
 ## :computer: 操作系统
 
+- [操作系统基础](docs/OperatingSystem/操作系统基础.md)
+
 ## :cloud: 网络
 
 - [协议层次及其服务类型](./docs/network/协议层次及其服务类型.md)
