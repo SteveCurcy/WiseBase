@@ -21,6 +21,8 @@
 - [操作系统基础](docs/OperatingSystem/操作系统基础.md)
 - [进程、线程与协程](docs/OperatingSystem/进程、线程与协程.md)
 - [进程基础](docs/OperatingSystem/进程基础.md)
+- [僵尸进程](docs/OperatingSystem/僵尸进程.md)
+- [写时复制机制](docs/OperatingSystem/写时复制机制.md)
 
 ## :cloud: 网络
 
