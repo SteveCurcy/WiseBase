@@ -10,6 +10,9 @@
 
 由于 GitHub 的 MarkDown 不支持自动生成文章大纲，因此你可以尝试使用油猴脚本 [TOC Bar](https://greasyfork.org/zh-CN/scripts/406337-toc-bar-auto-generating-table-of-content) 来生成浮动的文章大纲。
 
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSteveCurcy%2FWiseBase.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FSteveCurcy%2FWiseBase?ref=badge_large)
+
 ## :speaking_head: 语言
 
 ## :pencil2: 算法
@@ -81,4 +84,5 @@
 <div align="left">
   <a href="https://github.com/IIMars"><img src="assets/imgs/Contributor-IIMars.png" style="height: 50px; border-radius: 50%;" /></a>
   <a href="https://github.com/changguangsheng"><img src="assets/imgs/Contributor-cgs.png" style="height: 50px; border-radius: 50%;" /></a>
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2FSteveCurcy%2FWiseBase?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FSteveCurcy%2FWiseBase.svg?type=shield"/></a>
 </div>
