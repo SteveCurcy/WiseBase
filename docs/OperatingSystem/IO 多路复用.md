@@ -24,9 +24,10 @@ select 监视的描述符分为 3 类，分别是：
 
 此外，select 可以监控的 fd 集合数量是有限的，最大连接数由 `FD_SETSIZE` 宏定义决定，通常为 1024 个，具体受硬件影响。当然，你可以修改这个宏定义并重新编译内核，但是由于该机制使用轮询方式，这意味着你设置的数量越多性能越差。
 
-<div align="center"><video>
-  <source src="../../assets/videos/OS-IO-multipath-select.mp4" type="video/mp4">
-</video></div>
+<div align="center">
+  <img src="../../assets/imgs/OS-IO-multipath-select.gif" height=300px>
+</div>
+
 
 因此，select 有 3 个明显的缺陷：
 
