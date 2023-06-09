@@ -24,7 +24,7 @@
 - [调度算法](docs/OperatingSystem/调度算法.md)
 - [僵尸进程](docs/OperatingSystem/僵尸进程.md)
 - [写时复制机制](docs/OperatingSystem/写时复制机制.md)
-- [IO 多路复用](docs/OperatingSystem/IO 多路复用.md)
+- [IO 多路复用](docs/OperatingSystem/IO%20多路复用.md)
 - [惊群现象](docs/OperatingSystem/惊群现象.md)
 
 ## :cloud: 网络
