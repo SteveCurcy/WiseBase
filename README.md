@@ -26,6 +26,7 @@
 - [写时复制机制](docs/OperatingSystem/写时复制机制.md)
 - [IO 多路复用](docs/OperatingSystem/IO%20多路复用.md)
 - [惊群现象](docs/OperatingSystem/惊群现象.md)
+- [Swap 空间](docs/OperatingSystem/Swap%20空间.md)
 
 ## :cloud: 网络
 
