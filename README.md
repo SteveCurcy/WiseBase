@@ -21,8 +21,12 @@
 - [操作系统基础](docs/OperatingSystem/操作系统基础.md)
 - [进程、线程与协程](docs/OperatingSystem/进程、线程与协程.md)
 - [进程基础](docs/OperatingSystem/进程基础.md)
+- [调度算法](docs/OperatingSystem/调度算法.md)
 - [僵尸进程](docs/OperatingSystem/僵尸进程.md)
 - [写时复制机制](docs/OperatingSystem/写时复制机制.md)
+- [IO 多路复用](docs/OperatingSystem/IO%20多路复用.md)
+- [惊群现象](docs/OperatingSystem/惊群现象.md)
+- [Swap 空间](docs/OperatingSystem/Swap%20空间.md)
 
 ## :cloud: 网络
 
