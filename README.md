@@ -12,6 +12,8 @@
 
 ## :speaking_head: 语言
 
+- [C++ 基础](docs/Language/C++%20基础.md)
+
 ## :pencil2: 算法
 
 ## :hammer_and_wrench: 数据结构
