@@ -13,6 +13,8 @@
 ## :speaking_head: 语言
 
 - [C++ 基础](docs/Language/C++%20基础.md)
+- [C++ 内存管理](docs/Language/C++%20内存管理.md)
+- [C++11 新特性](docs/Language/C++11%20新特性.md)
 
 ## :pencil2: 算法
 
