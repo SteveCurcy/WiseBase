@@ -53,7 +53,7 @@ epoll 的接口非常简单，只有三个函数：
 
 `int epoll_create(int size)`
 
-这里的 size 向内核说明监听的数目，但是这不是限制，而是对内核的建议。如果函数调用成功则返回一个 epoll 文件描述符（句柄）。epoll 本身也是占用一个 fd，因此 epoll fd 也可以被其他进程 epoll，并且是用完后一定要 <mark>close关闭 epoll fd</mark>。
+这里的 size 向内核说明监听的数目，但是这不是限制，而是对内核的建议。如果函数调用成功则返回一个 epoll 文件描述符（句柄）。epoll 本身也是占用一个 fd，因此 epoll fd 也可以被其他进程 epoll，并且使用完后一定要 <mark>close关闭 epoll fd</mark>。
 
 我们来看一下 epoll 的结构：
 
@@ -110,14 +110,12 @@ int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout)
 - LT 水平触发模式：只要有未处理的事件，epoll 就会通知进程，`epoll_wait` 就会立即返回；
 - ET 边缘触发模式：只有事件列表发生变化时 epoll 才通知，即使当前进程没有处理完该事件，epoll 也不会再通知（如果没处理完则会出现「事件丢失」）；调用 `epoll_wait` 将会阻塞直到新事件的到来或超时
 
-此外，应该注意的是：<mark>一个 fd 可能产生多个事件</mark>，因此当 ET 模式下返回一个 fd 时，应该循环获取该 fd 的事件，并全部处理，直至获得 `EAGAIN` 错误。
-
 <div align="center">
   <img src="../../assets/imgs/OS-IO-epoll-structure.jpg" height="400px"></div>
 
 当一个事件到达 epoll entry 时，它会将 epi 添加到就绪队列，并唤醒一个带有排他性标志 `WQ_FLAG_EXCLUSIVE` 的等待进程；但是这时被唤醒的进程可能过很久才去处理 fd，或者根本不处理，这时如果处于 LT 模式，则应该唤醒其他被阻塞的进程来处理 fd IO 事件。
 
-因此，在扫描「就绪队列」并「收集事件」时，epoll 遍历并清空就绪队列，对于每个 epi 收集其返回的 event，如果没收集到 event，则继续去处理其他 epi，否则将当前 epi 的事件和用户传入的数据都拷贝给用户空间；此时内核会判断，<mark>如果是在LT模式下，则将当前 epi 重新放回就绪队列。
+因此，在扫描「就绪队列」并「收集事件」时，epoll 遍历并清空就绪队列，对于每个 epi 收集其返回的 event，如果没收集到 event，则继续去处理其他 epi，否则将当前 epi 的事件和用户传入的数据都拷贝给用户空间；此时内核会判断，<mark>如果是在LT模式下，则将当前 epi 重新放回就绪队列</mark>。
 
 遍历完成后，如果就绪队列不为空，则继续唤醒 epoll 等待队列上的其他 task。该 task 从 `epoll_wait` 醒来继续前行，重复上面的流程，继续唤醒等待上的其他 task ，这样链式唤醒下去。
 

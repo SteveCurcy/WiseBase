@@ -13,6 +13,9 @@
 ## :speaking_head: 语言
 
 - [C++ 基础](docs/Language/C++%20基础.md)
+- [C++ 内存管理](docs/Language/C++%20内存管理.md)
+- [C++11 新特性](docs/Language/C++11%20新特性.md)
+- [C++ STL](docs/Language/C++%20STL.md)
 
 ## :pencil2: 算法
 
@@ -76,7 +79,8 @@
 - [访问者模式](docs/designPatterns/访问者模式.md)
 
 ## :floppy_disk: 数据库
-- [MySQL是怎样运行的一](./docs/MySQL/MySQL是怎样运行的.md)
+- [MySQL是怎样运行的一](./docs/DataBase/MySQL是怎样运行的.md)
+- [Redis 入门](./docs/DataBase/Redis入门.md)
 ## :busts_in_silhouette: 贡献者
 
 感谢以下贡献者对本知识库的付出。如果您发现知识库中出现了一些错误或者想与我们讨论，请提交 Issue 来与我们联系。
