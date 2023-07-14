@@ -50,7 +50,11 @@ typedef struct redisObject{
 
 
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230704201215296.png" alt="image-20230704201215296" style="zoom: 20%;" />
+=======
+<img src="../assets/imgs/image-20230704201215296.png" alt="image-20230704201215296" style="zoom: 20%;" />
+>>>>>>> Stashed changes
 
 
 
@@ -145,7 +149,11 @@ typedef struct redisObject{
 
 String 的三种编码方式，
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230704220747286.png" alt="image-20230704220747286" style="zoom:23%;" />
+=======
+<img src="../assets/imgs/image-20230704220747286.png" alt="image-20230704220747286" style="zoom:23%;" />
+>>>>>>> Stashed changes
 
 `INT编码`： 存一个 整型， 可以用long 表示的整数以这种编码存储；
 
@@ -163,7 +171,11 @@ EMBSTR 和 RAW 都是由 redisObject 和 SDS 两个结构组成
 
 EMBSTR下 redisObject 和 SDS是连续的内存。 
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230706104841838.png" alt="image-20230706104841838" style="zoom:33%;" />
+=======
+<img src="../assets/imgs/image-20230706104841838.png" alt="image-20230706104841838" style="zoom:33%;" />
+>>>>>>> Stashed changes
 
 - **优点**
 
@@ -175,7 +187,11 @@ EMBSTR下 redisObject 和 SDS是连续的内存。
 
 RAW下 redisObject 和 SDS的内存是分开的。
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230706104902156.png" alt="image-20230706104902156" style="zoom:33%;" />
+=======
+<img src="../assets/imgs/image-20230706104902156.png" alt="image-20230706104902156" style="zoom:33%;" />
+>>>>>>> Stashed changes
 
 编码的转换：
 
@@ -225,7 +241,11 @@ struct __attribute__ ((__packed__)) sdshdr8 {
 
 
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230706152708945.png" alt="image-20230706152708945" style="zoom: 33%;" />
+=======
+<img src="../assets/imgs/image-20230706152708945.png" alt="image-20230706152708945" style="zoom: 33%;" />
+>>>>>>> Stashed changes
 
 1. 增加长度字段len，快速返回长度
 2. 增加空域空间（alloc-len）， 为后续追加数据留余地
@@ -291,7 +311,11 @@ List 作为一个列表存储， 属于 底层的数据结构， 比如： 存�
 
 从左边List头部 进行插入。
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707094525492.png" alt="image-20230707094525492" style="zoom: 25%;" />
+=======
+<img src="../assets/imgs/image-20230707094525492.png" alt="image-20230707094525492" style="zoom: 25%;" />
+>>>>>>> Stashed changes
 
 #### RPUSH
 
@@ -306,7 +330,11 @@ List 作为一个列表存储， 属于 底层的数据结构， 比如： 存�
 
 从右边List尾部 进行插入。
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707094824667.png" alt="image-20230707094824667" style="zoom: 25%;" />
+=======
+<img src="../assets/imgs/image-20230707094824667.png" alt="image-20230707094824667" style="zoom: 25%;" />
+>>>>>>> Stashed changes
 
 #### LPOP
 
@@ -321,7 +349,11 @@ List 作为一个列表存储， 属于 底层的数据结构， 比如： 存�
 
 从左边List头部 进行删除元素。
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707095206362.png" alt="image-20230707095206362" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230707095206362.png" alt="image-20230707095206362" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 #### RPOP
 
@@ -336,7 +368,11 @@ List 作为一个列表存储， 属于 底层的数据结构， 比如： 存�
 
 从右边List的尾部 进行删除元素。
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707095307315.png" alt="image-20230707095307315" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230707095307315.png" alt="image-20230707095307315" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 
 
@@ -383,7 +419,11 @@ del 命令同步删除命令， 回阻塞客户端，直到删除完成， unlin
 
 ### 读操作
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707101232912.png" alt="image-20230707101232912" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230707101232912.png" alt="image-20230707101232912" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 
 
@@ -427,7 +467,11 @@ start、 stop 为 负数， 表示倒数第几个元素
 
 3.2版本前， List对象有两种编码方式，一种ZIPLIST， 另一种LINKEDLIST。
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707102839456.png" alt="image-20230707102839456" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230707102839456.png" alt="image-20230707102839456" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 使用ZIPLIST需要满足：
 
@@ -436,7 +480,11 @@ start、 stop 为 负数， 表示倒数第几个元素
 
 ZIPLIST 底层用 压缩列表实现， ZIPLIST 编码如下：
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707103707008.png" alt="image-20230707103707008" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230707103707008.png" alt="image-20230707103707008" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 
 
@@ -446,7 +494,11 @@ ZIPLAIST 内存排列得很紧凑， 可以有效节约内存空间。
 
 LINKEDLIST 编码如下：
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707104145199.png" alt="image-20230707104145199" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230707104145199.png" alt="image-20230707104145199" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 数据是以链表的形式链接得， 删除更为灵活，但内存不如ZIPLIST 紧凑， 所以只有在列表个数或节点数据长度较大的时候才使用LINKEDLIST编码。
 
@@ -458,13 +510,21 @@ ZIPLIST 在数据较少时节约内存， LINKEDLIST 为了数据多时提高更
 
 3.2版本之后引入QUICKLIST，是ZIPLIST和LINKEDLIST的结合体
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707104725332.png" alt="image-20230707104725332" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230707104725332.png" alt="image-20230707104725332" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 
 
 LINKEDLIST 单个节点存一个ZIPLIST，即多个数据
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707104801220.png" alt="image-20230707104801220" style="zoom: 33%;" />
+=======
+<img src="../assets/imgs/image-20230707104801220.png" alt="image-20230707104801220" style="zoom: 33%;" />
+>>>>>>> Stashed changes
 
 当数据少时，QUICKLIST 就一个节点，
 
@@ -498,7 +558,11 @@ Set的查询，SISMEMBR可以查询元素是否存在， SCARD、SMEMBERS、SSCA
 
 DEL 删除Set对象
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707112933919.png" alt="image-20230707112933919" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230707112933919.png" alt="image-20230707112933919" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 #### 写操作
 
@@ -513,14 +577,22 @@ DEL 删除Set对象
 (integer) 3
 ```
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707140812581.png" alt="image-20230707140812581" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230707140812581.png" alt="image-20230707140812581" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 ```shell
 127.0.0.1:6379> SADD setniuniu 11 22  33
 (integer) 3
 ```
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707140906937.png" alt="image-20230707140906937" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230707140906937.png" alt="image-20230707140906937" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 ##### SREM
 
@@ -533,11 +605,19 @@ DEL 删除Set对象
 (integer) 1
 ```
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707141033015.png" alt="image-20230707141033015" style="zoom:25%;" />
 
 #### 读操作
 
 <img src="../../assets/imgs/image-20230707144950041.png" alt="image-20230707144950041" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230707141033015.png" alt="image-20230707141033015" style="zoom:25%;" />
+
+#### 读操作
+
+<img src="../assets/imgs/image-20230707144950041.png" alt="image-20230707144950041" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 ##### SISMEMBER
 
@@ -615,7 +695,11 @@ DEL 删除Set对象
 
 功能：返回在第一个集合里，同时在后面所有集合都存在的元素(交集)
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707160421012.png" alt="image-20230707160421012" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230707160421012.png" alt="image-20230707160421012" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 ```shell
 127.0.0.1:6379> SINTER sets setniuniu
@@ -676,6 +760,7 @@ DEL 删除Set对象
 
 #### 编码方式
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707160758362.png" alt="image-20230707160758362" style="zoom:25%;" />
 
 Redis 出于性能和内存的考虑，支持两种编码， 如果Set元素都是整数， 且元素数量不超过512个，使用INTSET编码， 排列紧凑，内存占用少， 查询时需要二分查询
@@ -685,6 +770,17 @@ Redis 出于性能和内存的考虑，支持两种编码， 如果Set元素都�
 不满足INTSET编码， 使用HASHTABLE结构， HASHTABLE 查询一个元素的性能很高，O(1) 就能找到一个元素是否存在。
 
 <img src="../../assets/imgs/image-20230707162228942.png" alt="image-20230707162228942" style="zoom:33%;" />
+=======
+<img src="../assets/imgs/image-20230707160758362.png" alt="image-20230707160758362" style="zoom:25%;" />
+
+Redis 出于性能和内存的考虑，支持两种编码， 如果Set元素都是整数， 且元素数量不超过512个，使用INTSET编码， 排列紧凑，内存占用少， 查询时需要二分查询
+
+<img src="../assets/imgs/image-20230707161107797.png" alt="image-20230707161107797" style="zoom:33%;" />
+
+不满足INTSET编码， 使用HASHTABLE结构， HASHTABLE 查询一个元素的性能很高，O(1) 就能找到一个元素是否存在。
+
+<img src="../assets/imgs/image-20230707162228942.png" alt="image-20230707162228942" style="zoom:33%;" />
+>>>>>>> Stashed changes
 
 Set 可以高效的管理无序集合， 为多个集合求交并补集，底层编码有INSTSET 和 HASHTABLE 两种， INTSET 对应少量整数集合介于内存， HASHTABLE 适用于快速定位某个元素。
 
@@ -708,7 +804,11 @@ Hash 是一个 field、 value 都为string 的hash表， 存储在Redis的内存
 
 DEL 删除Hash对象
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230707163425947.png" alt="image-20230707163425947" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230707163425947.png" alt="image-20230707163425947" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 #### 写操作
 
@@ -873,6 +973,7 @@ Hash 底层有两种编码结构， 一种时压缩列表， 一个时HASHTABLE�
 
 两个条件任何一个不满足， 编码结构就用HASHTABLE
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230708095901246.png" alt="image-20230708095901246" style="zoom:25%;" />
 
 ZIPLIST 在数据量较小时将数据紧凑排列， 对应到Hash，将filed-value 当作entry 放入ZIPLIST。
@@ -882,6 +983,17 @@ ZIPLIST 在数据量较小时将数据紧凑排列， 对应到Hash，将filed-v
 无序集合Set 也使用HASHTABLE ， 在Set中value始终为NULL， 但在HSet中，有对应的值。
 
 <img src="../../assets/imgs/image-20230708100933153.png" alt="image-20230708100933153" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230708095901246.png" alt="image-20230708095901246" style="zoom:25%;" />
+
+ZIPLIST 在数据量较小时将数据紧凑排列， 对应到Hash，将filed-value 当作entry 放入ZIPLIST。
+
+<img src="../assets/imgs/image-20230708100212141.png" alt="image-20230708100212141" style="zoom:25%;" />
+
+无序集合Set 也使用HASHTABLE ， 在Set中value始终为NULL， 但在HSet中，有对应的值。
+
+<img src="../assets/imgs/image-20230708100933153.png" alt="image-20230708100933153" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 
 
@@ -915,7 +1027,11 @@ ZSet 是有序结合，也是Sorted Set， 是一组 按 关联积分 有序的�
 - LT：更新 新的分值 比当前分值小的成员， 不存在则新增
 - GT：更新 新的分值 比当前分值大的成员， 不存在则新
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230708163010599.png" alt="image-20230708163010599" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230708163010599.png" alt="image-20230708163010599" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 ```shell
 127.0.0.1:6379> ZADD zsetniuniu 128 user3 512 user4
@@ -923,7 +1039,11 @@ ZSet 是有序结合，也是Sorted Set， 是一组 按 关联积分 有序的�
 
 ```
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230708192137257.png" alt="image-20230708192137257" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230708192137257.png" alt="image-20230708192137257" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 
 
@@ -1044,13 +1164,21 @@ ZSet 是有序结合，也是Sorted Set， 是一组 按 关联积分 有序的�
 
 ZSet 底层编码有两种， 一种是ZIPLIST 另一种是SKIPLIST + HASHTABLE
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230708195234434.png" alt="image-20230708195234434" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230708195234434.png" alt="image-20230708195234434" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 
 
 ZSet中ZIPLIST 用于数据量比较小时候的内存节省。
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230708195619646.png" alt="image-20230708195619646" style="zoom:33%;" />
+=======
+<img src="../assets/imgs/image-20230708195619646.png" alt="image-20230708195619646" style="zoom:33%;" />
+>>>>>>> Stashed changes
 
 
 
@@ -1355,7 +1483,11 @@ OK
 
 **Redis 过期键 采用的是 惰性删除+ 定期删除 二者结合的方式**
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230710101644371.png" alt="image-20230710101644371" style="zoom:35%;" />
+=======
+<img src="../assets/imgs/image-20230710101644371.png" alt="image-20230710101644371" style="zoom:35%;" />
+>>>>>>> Stashed changes
 
 定期删除需要考虑：
 
@@ -1478,7 +1610,11 @@ HASHTABLE 可以想象成目录， 通过目录找到页数。通过HASHTABLE �
 
 
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230708204327886.png" alt="image-20230708204327886" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230708204327886.png" alt="image-20230708204327886" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 
 
@@ -1493,7 +1629,11 @@ HASHTABLE 可以想象成目录， 通过目录找到页数。通过HASHTABLE �
 
 #### Redis的跳表实现
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230708211739783.png" alt="image-20230708211739783" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230708211739783.png" alt="image-20230708211739783" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 
 
@@ -1509,7 +1649,11 @@ typedef struct zskiplistNode {
 } zskiplistNode;
 ```
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230708213241635.png" alt="image-20230708213241635" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230708213241635.png" alt="image-20230708213241635" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 #### Redis 跳表单个节点有几层？
 
@@ -1525,4 +1669,8 @@ String、List、Set、HSet、ZSet 5种对象
 
 
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230709155158464.png" alt="image-20230709155158464" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230709155158464.png" alt="image-20230709155158464" style="zoom:25%;" />
+>>>>>>> Stashed changes

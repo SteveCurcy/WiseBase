@@ -45,7 +45,11 @@ struct dict {
 
 redisDb 数据库对象， 指向数据字典， 字典里包含了 平常存储的k-v数据，k是字符串对象， vlaue 支持任意Redis对象
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230710151107517.png" alt="image-20230710151107517" style="zoom:33%;" />
+=======
+<img src="../assets/imgs/image-20230710151107517.png" alt="image-20230710151107517" style="zoom:33%;" />
+>>>>>>> Stashed changes
 
 #### 添加数据
 
@@ -53,7 +57,11 @@ redisDb 数据库对象， 指向数据字典， 字典里包含了 平常存储
 
 比如， `SET hellomsg "hello mart"`
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230710151444243.png" alt="image-20230710151444243" style="zoom:33%;" />
+=======
+<img src="../assets/imgs/image-20230710151444243.png" alt="image-20230710151444243" style="zoom:33%;" />
+>>>>>>> Stashed changes
 
 #### 查询数据
 
@@ -67,7 +75,11 @@ redisDb 数据库对象， 指向数据字典， 字典里包含了 平常存储
 
 `RPUSH animals bird`
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230710151810513.png" alt="image-20230710151810513" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230710151810513.png" alt="image-20230710151810513" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 #### 删除数据
 
@@ -75,7 +87,11 @@ redisDb 数据库对象， 指向数据字典， 字典里包含了 平常存储
 
 `DEL scoredic` ，成功之后的结构
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230710152050168.png" alt="image-20230710152050168" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230710152050168.png" alt="image-20230710152050168" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 
 
@@ -83,7 +99,11 @@ redisDb 数据库对象， 指向数据字典， 字典里包含了 平常存储
 
 Redis 数据都可以设置过期键， 这样 到了一定时间， 这些对象就会自动过期回收，
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230710153428221.png" alt="image-20230710153428221" style="zoom:33%;" />
+=======
+<img src="../assets/imgs/image-20230710153428221.png" alt="image-20230710153428221" style="zoom:33%;" />
+>>>>>>> Stashed changes
 
 这里的dict中和expires 中key对象， 存储的String 对象指针， 所以不会重复占用内容。
 
@@ -137,7 +157,11 @@ I/O多路复用， 就是有I/O操作触发时， 就会产生通知， 收到�
 
 
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230710164533424.png" alt="image-20230710164533424" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230710164533424.png" alt="image-20230710164533424" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 
 
@@ -177,11 +201,19 @@ int listenToPort(connListener *sfd)
 
 
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230712105711557.png" alt="image-20230712105711557" style="zoom:25%;" />
 
 详细
 
 ![image-20230712110847604](../../assets/imgs/image-20230712110847604-9131328.png)
+=======
+<img src="../assets/imgs/image-20230712105711557.png" alt="image-20230712105711557" style="zoom:25%;" />
+
+详细
+
+![image-20230712110847604](../assets/imgs/image-20230712110847604-9131328.png)
+>>>>>>> Stashed changes
 
 
 
@@ -258,7 +290,11 @@ typedef struct redisObject{
 
 Redis 在LFU 策略下复用lru字段，因为该字段有 24bit， 高16bit 存储ldt， 低8bit 存储logc
 
+<<<<<<< Updated upstream
 <img src="../../assets/imgs/image-20230713103551629.png" alt="image-20230713103551629" style="zoom:25%;" />
+=======
+<img src="../assets/imgs/image-20230713103551629.png" alt="image-20230713103551629" style="zoom:25%;" />
+>>>>>>> Stashed changes
 
 高16位保存上次访问时间戳， 后8位存储的是一个访问次数
 

@@ -159,7 +159,11 @@ Redis 提供了3中刷盘策略：
 
 第一步：将数据写入AOF 缓存中， 缓存名字是aof_buf，是一个sds数据
 
+<<<<<<< Updated upstream
 第二步：ao f_buf 对应数据刷入磁盘缓存区，
+=======
+第二步：ao f_buf 对应数据刷入磁盘缓存区
+>>>>>>> Stashed changes
 
 
 
