@@ -81,6 +81,9 @@
 ## :floppy_disk: 数据库
 - [MySQL是怎样运行的一](./docs/DataBase/MySQL是怎样运行的.md)
 - [Redis 入门](./docs/DataBase/Redis入门.md)
+- [Redis数据结构](./docs/Redis/Redis 数据结构.md)
+- [Redis 是怎样运作的](./docs/Redis/Redis 是怎样运作的.md)
+- [Redis数据丢失解决方案.md](./docs/Redis/Redis数据丢失解决方案.md)
 ## :busts_in_silhouette: 贡献者
 
 感谢以下贡献者对本知识库的付出。如果您发现知识库中出现了一些错误或者想与我们讨论，请提交 Issue 来与我们联系。
