@@ -137,7 +137,7 @@ appendonly 设置位yes， 即可打开AOF。打开之后，Redis 每条更改�
 
 
 
-#### AOF写入流程
+### AOF写入流程
 
 执行请求时，每条日志都会写入到AOF。
 
@@ -155,15 +155,140 @@ Redis 提供了3中刷盘策略：
 
 <img src="../../assets/imgs/image-20230714142602080.png" alt="image-20230714142602080" style="zoom:50%;" />
 
-#### 写入AOF 细节
+### 写入AOF 细节
 
 第一步：将数据写入AOF 缓存中， 缓存名字是aof_buf，是一个sds数据
 
-<<<<<<< Updated upstream
-第二步：ao f_buf 对应数据刷入磁盘缓存区，
-=======
-第二步：ao f_buf 对应数据刷入磁盘缓存区
->>>>>>> Stashed changes
+```c
+sds aof_buf;
+```
+
+第二步：aof_buf 对应数据刷入磁盘缓存区，Redis 源码中 有4个时机，会调用一个flushAppendOnlyFile 的函数， 这个函数会使用write函数来将数据写入操作系统缓冲区：
+
+1. 处理完事件处理后，等待下一次时间到来之前， 也就是beforeSleep
+2. 周期函数serverCron中
+3. 服务器退出之前的准备工作中
+4. 通过配置指令关闭AOF功能时
+
+如果是appendfsync everysec 策略， 在上一次fsync还没完成之前，并且时长不超过两秒，本次flushAppendOnlyFile 就会放弃， 也就是说本轮放弃aof_buf 里的数据 write 进fd
+
+第三步， 刷盘， 即调用系统的flush函数，（fsync/fdatasync）
+
+ 刷盘是在flushAppendOnlyFile函数中，在write 之后， 但不一定调用flushAppendOnlyFile， flush 就一定会被调用，这里其实是支持一个刷盘时机的配置。
+
+<img src="../../assets/imgs/image-20230715105408611.png" alt="image-20230715105408611" style="zoom: 33%;" />
+
+#### AOF列子
+
+```shell
+127.0.0.1:6379> set city sz
+OK
+127.0.0.1:6379> hset mart a b
+(integer) 1
+127.0.0.1:6379> hset mart c d
+(integer) 1
+```
+
+对应生成AOF文件
+
+<img src="../../assets/imgs/image-20230715105727660.png" alt="image-20230715105727660" style="zoom: 25%;" />
+
+#### AOF重写
+
+AOF不断写入， 会不会膨胀？
+
+Redis采用重新的方式解决：
+
+Redis可以在AOF 文件体积变得过大时，自动地在后台Fork 一个子进程， 用于对AOF进行重写，针对相同key的操作，进行合并，比如同一个key的set操作，就是后面覆盖前面。
+
+在重写过程中，Redis 不但将新的操作记录 在原有的AOF 缓冲区， 而且还会记录在AOF重写缓冲区。一旦新AOF文件创建完毕，Redis 就会将重写缓冲区内容，追加到新的AOF文件， 再用新AOF文件替换原来的AOF文件。
+
+<img src="../../assets/imgs/image-20230715112235281.png" alt="image-20230715112235281" style="zoom:25%;" />
+
+AOF达到多大会重写， 实际上，这也是配置决定，默认如下，同时满足两个条件则重写：
+
+```
+# 相比上次重写时候数据增长10%
+auto-aof-rewrite-percentage 100
+
+# 超过
+auto-aof-rewrite-min-size. 64mb
+```
+
+超过64M的情况下， 相比上次重写的数据大一倍，则触发重写。
+
+
+
+### 总结
+
+AOF 是通过记录日志来进行持久化，Redis 提供了三种刷盘策略以应对不同的性能要求，分别是每次刷、每秒刷、不主动刷三种，其中Redis 是推荐每秒刷的模式。
+
+针对AOF文件 不断膨胀的问题， Redis还提供了重写机制，针对相同的key的操作进行合并，来减小AOF的空间。
+
+
+
+
+
+## AOF优化--混合持久化
+
+### 混合持久化是什么？
+
+混合部署 实际 发生在AOF 重写阶段， 将当前状态保存为RDB 二进制内容，写入AOF 文件，再将重写缓冲区的内容追加到AOF文件。
+
+此时的AOF文件，不再单纯的是日志数据，而是 二进制数据 + 日志数据的混合体，所以叫混合持久化
+
+
+
+### 混合持久化解决什么问题
+
+混合持久化是发生在原有的AOF流程，只是重写的时候使用RDB进行了优化
+
+### 混合持久化开启后，服务启动时，如何加载持久化数据
+
+混合持久化文件开头有Redis这个标记。
+
+如果同时启用AOF 和 RDB， Redis重新启动时，会使用AOF 文件来重建数据集，通常AOF的数据会更完整，所有优先使用混合持久化的数据。
+
+<img src="../../assets/imgs/image-20230715144924962.png" alt="image-20230715144924962" style="zoom:33%;" />
+
+### 总结
+
+混合持久化是对AOF重写的优化，可以大大降低AOF重写的性能损耗， 降低AOF文件的存储空间，付出的代价是降低AOF文件的读写行。
+
+
+
+## AOF优化-MP方案
+
+
+
+
+
+### MP-AOF方案概述
+
+MP-AOF， 全称Multi Part AOF， 多部件AOF， 通俗来说就是一个AOF文件，变成多个AOF文件配合。
+
+MP-AOF 文件核心有两个Part组成：
+
+1. BASE AOF文件， 基础AOF 文件，记录了基本的命令
+2. INCR AOF文件，记录了在重写过程中新增的操作命令
+
+原来的AOF文件包含了操作的命令记录 ， MP-AOF 则提出了BASE AOF 和 INCR AOF 两种文件的组合， 一个BASE AOF 结合 INCR AOF， 一起来表示所有的操作命令。
+
+新模型的流程：
+
+
+
+<img src="../../assets/imgs/image-20230715145828209.png" alt="image-20230715145828209" style="zoom:33%;" />
+
+
+
+<img src="../../assets/imgs/image-20230715150851306.png" alt="image-20230715150851306" style="zoom:33%;" />
+
+重写阶段，主进程写入（aof_buf） AOF缓冲区即可， aof_buf的数据最终写入新打开的INCR AOF文件，子进程根据fork时数据库的数据， 重写并生成新的一个BASE AOF文件。 
+
+写完之后 不会覆盖原有的AOF文件， 只需要更新manifest文件，是一个文件清单，记录当前有效的BASE AOF INCR AOF，
+
+旧的BASE AOF、 INCR AOF 会被标记为history AOF， 会被Redis 异步删除。
 
 
 
