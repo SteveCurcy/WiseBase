@@ -26,7 +26,7 @@ STL（Standard Template Library）是 C++ 的标准模板库，提供一套功�
 
 ## 容器
 
-容器是一些用于存储数据的集合的实现，采用了运用最广泛的一些数据结构。容器主要包括「顺序容器」、「关联容器」和「容器适配器」。
+容器是一些用于存储数据的集合的实现，采用了运用最广泛的一些数据结构。容器主要包括「序列式容器」、「关联容器」和「容器适配器」。
 
 <div align="center">
   <img src="../../assets/imgs/Lang-C-STL-Containers.png" height="400px">
@@ -367,7 +367,7 @@ pair<iterator, bool> emplace(_Args&& ...__args) {
 
 *map* 的 `emplace` 函数会调用「红黑树」的 `__emplace_unique` 函数，使用 key-value 构造一个节点并<mark>尝试</mark>插入到红黑树中。当该 key 对应的节点已经存在，则不做操作；否则将新构造的节点加入红黑树中。
 
-如源代码所示，`emplace` 函数还会返回一个 `pair<map::iterator, bool>` 类型的返回值，它的 first 是指向新节点/key 对应的节点的迭代器，second 表示参数传入的 key-value 是否被插入红黑树。
+如源代码所示，`emplace` 函数还会返回一个 `pair<map::iterator, bool>` 类型的返回值，它的 first 是指向新节点 key 对应的节点的迭代器，second 表示参数传入的 key-value 是否被插入红黑树。
 
 ```c++
 template <class ..._Args>
