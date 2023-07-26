@@ -98,11 +98,28 @@ private:
 
 ## 3. malloc 原理
 
-malloc 函数用于动态分配内存。为了减少内存碎片和系统调用的开销，malloc 采用内存池的方式，先申请大块内存作为堆区，然后将堆区分为多个内存块，以块作为内存管理的基本单位。
+malloc 函数用于动态分配内存。为了减少内存碎片和系统调用的开销，malloc 采用内存池的方式，先申请大块内存作为堆区，然后将内存分成不同大小的内存块，然后用户申请内存时，直接从内存池中选择一块相近的内存块即可。
 
-当用户申请内存时，直接从堆区分配一块合适的空闲块。malloc 采用隐式链表结构将堆区分成连续的、大小不一的块，包含已分配块和未分配块；同时 malloc 采用显式链表结构来管理所有的空闲块，即使用一个双向链表将空闲块连接起来，每一个空闲块记录了一个连续的、未分配的地址。
+![img](../../assets/imgs/memory-pool.png)
 
-当进行内存分配时，malloc 会通过隐式链表遍历所有的空闲块，选择满足要求的块进行分配；当进行内存合并时，malloc 采用边界标记法，根据每个块的前后块是否已经分配来决定是否进行块合并。
+内存池保存在长为 128 的 bins 数组，每个元素都是一个双向链表，链表的每个节点是一个 chunk。
+
+- `bins[0]` 目前没有使用；
+- `bins[1]` 的链表称为 unsorted_list，用于维护 free 释放的 chunk；
+- `bins[2,63)` 的区间称为 small_bins，用于维护 ＜512 字节的内存块，区间中的每个元素对应（指向的）的链表中的 chunk 大小均为 index * 8。
+- `bins[64,127)` 称为 large_bins，用于维护 >512 字节的内存块，每个元素对应的链表中的 chunk 大小不同，index 越大，链表中 chunk 的内存大小相差越大，例如: 下标为 64 的 chunk 大小介于 [512, 512+64)，下标为 95 的 chunk 大小介于 [2k+1,2k+512)。同一条链表上的 chunk，按照从小到大的顺序排列。
+
+malloc 将内存分成了大小不同的 chunk，然后通过 bins 数组来组织起来。malloc 将相似大小的 chunk 用双向链表链接起来，这样一个链表被称为一个 bin。同一个 small bin 中的 chunk 具有相同的大小，两个相邻的 small bin 中的 chunk 大小相差 8B；large bin 的每个 bin 相差 64B。
+
+malloc 除了上述三个 bin 之外，还有一个 fast bin。一般的来说，程序在运行时会经常需要申请和释放一些较小的内存空间。当分配器合并了相邻的几个小的 chunk 之后，也许马上就会有另一个小块内存的请求，需要再从大空间中切分，这样无疑是比较低效的。malloc 中在分配过程中引入了 fast bins，不大于 max_fast (默认值为 64B) 的 chunk 被释放后，首先会被放到 fast bins 中，fast bins 中的 chunk 并不改变它的使用标志（使用/未使用）。这样也就无法将它们合并，当需要给用户分配的 chunk 小于或等于 max_fast 时，malloc 首先会在 fast bins 中查找相应的空闲块，然后才会去查找 bins 中的空闲 chunk。在某个特定的时候，malloc 会遍历 fast bins 中的 chunk，将相邻的空闲 chunk 进行合并，并将合并后的 chunk 加入 unsorted bin 中，然后再将 unsorted bin 里的 chunk 加入 bins 中。
+
+如果被用户释放的 chunk 大于 max_fast，或者 fast bins 中的空闲 chunk 合并后，这些 chunk 首先会被放到 unsorted bin 队列中，在进行 malloc 操作的时候，如果在 fast bins 中没有找到合适的 chunk，则 malloc 会先在 unsorted bin 中查找合适的空闲 chunk，然后才查找 bins。如果 unsorted bin 不能满足分配要求。malloc 便会将 unsorted bin 中的 chunk 加入 bins 中。然后再从 bins 中继续进行查找和分配过程。<mark>unsorted bin 可以看做是 bins 的一个缓冲区，增加它只是为了加快分配的速度。</mark>
+
+![img](../../assets/imgs/chunk.png)
+
+malloc 会给用户分配的空间的前后加上一些控制信息，用这样的方法来记录分配的信息，以便完成分配和释放工作。chunk 指针指向 chunk 开始的地方，图中的 mem 指针才是真正返回给用户的内存指针。其中 P 代表前一个块是否在被使用；当 chunk 空闲时，M 状态不存在。
+
+不是 malloc 后就马上占用实际内存，而是第一次使用时（如调用 memset）发现虚存对应的物理页面未分配，产生缺页中断，才真正分配物理页面，同时更新进程页面的映射关系。
 
 ## 4. new 和 delete
 
@@ -219,6 +236,8 @@ RALL 可以帮助开发者将管理堆上的内存简化为管理栈上的内存
 
 RALL 不仅可以简化内存管理，还可以简化其他资源管理，如文件资源，锁等。
 
-## 参考
+## 原文
 
 [底层剖析引用实现原理](https://blog.csdn.net/weixin_49199646/article/details/109847691)
+
+[malloc和free的实现原理解析](https://jacktang816.github.io/post/mallocandfree/)
