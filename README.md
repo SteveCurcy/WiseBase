@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/License-GPL2.0-lightgreen" />
 </div>
 
-| 语言             | 算法      | 数据结构 | 操作系统   | 网络 | 设计模式 | 数据库 |
+| 语言             | 算法      | 架构 | 操作系统   | 网络 | 设计模式 | 数据库 |
 | ---------------- | --------- | -------- | ---------- | ---- | -------- | ------ |
 | :speaking_head: | :pencil2: | :hammer_and_wrench: | :computer: | :cloud: | :bookmark: | :floppy_disk: |
 
@@ -16,10 +16,13 @@
 - [C++ 内存管理](docs/Language/C++%20内存管理.md)
 - [C++11 新特性](docs/Language/C++11%20新特性.md)
 - [C++ STL](docs/Language/C++%20STL.md)
+- [C语言冷门知识](docs/Language/C语言冷门知识.md)
 
 ## :pencil2: 算法
 
-## :hammer_and_wrench: 数据结构
+## :hammer_and_wrench: 架构
+
+- [高可用架构设计](./docs/Arch/高可用架构设计.md)
 
 ## :computer: 操作系统
 
