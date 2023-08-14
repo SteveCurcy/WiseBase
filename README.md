@@ -87,6 +87,7 @@
 ## :floppy_disk: 数据库
 - [MySQL是怎样运行的一](./docs/DataBase/MySQL是怎样运行的.md)
 - [数据库拆分](./docs/DataBase/数据库拆分.md)
+- [数据库拆分](./docs/DataBase/MySQL模糊搜索.md)
 - [Redis 入门](./docs/DataBase/Redis入门.md)
 - [Redis数据结构](./docs/Redis/Redis数据结构.md)
 - [Redis是怎样运作的](./docs/Redis/Redis是怎样运作的.md)
