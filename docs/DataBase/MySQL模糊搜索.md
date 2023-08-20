@@ -68,3 +68,7 @@ select * from user where `invPhone` like CONCAT(REVERSE('56'), '%');	# 先反转
 ![image-20230814214422370](../../assets/imgs/Database-MySQL-Like-invert-comp.png)
 
 通过 MySQL 语句解释也可以看出，反向索引只需要读取 1000 行记录而普通二级索引则需要全表扫描。这样对于特定邮箱（如“xxx@163.com”）的搜索就可以非常快了，而且由于反向索引的值就是原索引值的反转值，所以当只需要索引列信息和 id 时，可以使用 REVERSE 函数，利用索引覆盖实现更快的查询而不用回表。
+
+# 原文
+
+[【MySQL 原理分析】之 Explain & Trace 深入分析全模糊查询(%%)走索引的原理](https://www.cnblogs.com/Howinfun/p/12449975.html)
